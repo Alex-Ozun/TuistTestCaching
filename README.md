@@ -1,4 +1,4 @@
-# Tuist test doesn't use cached targets.
+# Tuist test doesn't use cached targets (3.28.0).
 
 ![graph](graph.png)
 
@@ -31,10 +31,17 @@ time tuist test --clean
 ``` 
 
 ## Expected result:
-
-1. Since only `App` target was modified, we only expect `App` to be compiled and tested. 
-1. Since `FeatureA` was not modified, we expect it to be replaced by cached `xcframework`, thus skipping BOTH compilation and testing.
+ 
+Since `FeatureA` was not modified, we expect it to be replaced by the cached `xcframework` from Step 1, thus skipping BOTH compilation and testing.
 
 ## Actual result:
 
-`FeatureA` is only skipped for testing, but is STILL compiled. You can observe that the last step produces `[FeatureA] Compiling FeatureA_vers.c` in logs and takes 15+ seconds to complete.  
+`FeatureA` is only skipped for testing, but is STILL compiled. You can observe that the last step takes 15+ seconds to complete and produces compilation logs for `FeatureA`:  
+```
+FeatureATests has not changed from last successful run, skipping...
+Generating project FeatureA
+[...]
+[FeatureA] Processing FeatureA-Info.plist
+[FeatureA] Compiling FeatureA_vers.c
+[FeatureA] Touching FeatureA.framework
+```
