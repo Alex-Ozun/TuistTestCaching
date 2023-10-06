@@ -12,18 +12,18 @@
 tuist cache warm --xcframeworks
 ``` 
 `FeatureA` should now be cached. 
-1. Run tests.
+2. Run tests.
 ```bash
 tuist test --clean
 ``` 
 Both `App` and `FeatureA` are expected to be tested.
-1. Modify `App` module, go to `App/Sources/AppDelegate.swift` and uncomment the last line: 
-```git
+3. Modify `App` module, go to `App/Sources/AppDelegate.swift` and uncomment the last line: 
+```diff
 + func hello() {}
 - //func hello() {}
 ``` 
 This invalidates `App` caches, but `FeatureA` caches are still valid. 
-1. Run tests again and measure the time.  
+4. Run tests again and measure the time.  
 ```bash
 time tuist test --clean
 ``` 
