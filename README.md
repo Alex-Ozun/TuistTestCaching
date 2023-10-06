@@ -13,11 +13,10 @@ tuist cache warm --xcframeworks
 ``` 
 `FeatureA` should now be cached. 
 
-2. Run tests.
+2. Run tests. Both `App` and `FeatureA` are expected to be compiled and tested.
 ```bash
 tuist test --clean
 ``` 
-Both `App` and `FeatureA` are expected to be tested.
 
 3. Modify `App` module, go to `App/Sources/AppDelegate.swift` and uncomment the last line: 
 ```diff
@@ -34,7 +33,7 @@ time tuist test --clean
 ## Expected result:
 
 1. Since only `App` target was modified, we only expect `App` to be compiled and tested. 
-1. Since `FeatureA` was NOT modified, we expect it to be replaced by cached xcframework, thus skipping both compilation and testing.
+1. Since `FeatureA` was not modified, we expect it to be replaced by cached `xcframework`, thus skipping BOTH compilation and testing.
 
 ## Actual result:
 
