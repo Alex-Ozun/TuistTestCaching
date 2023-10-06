@@ -1,0 +1,17 @@
+.DS_Store
+derived_data.noindex/*
+
+# Tuist intermediate files
+Derived
+TuistCache
+
+# Tuist
+/**/*.xcodeproj/*
+/Manifests.xcworkspace/*
+/Workspace.xcworkspace/*
+/Tuist/tuist-files.xcfilelist
+/Tuist/tuist-shas.input
+/Tuist/Dependencies/*
+.tuist-bin
+.tuist-version
+
